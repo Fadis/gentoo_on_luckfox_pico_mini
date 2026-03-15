@@ -1,0 +1,68 @@
+diff --git a/src/gallium/frontends/lavapipe/lvp_execute.c b/src/gallium/frontends/lavapipe/lvp_execute.c
+index f8ceb088cac..c6882a705df 100644
+--- a/src/gallium/frontends/lavapipe/lvp_execute.c
++++ b/src/gallium/frontends/lavapipe/lvp_execute.c
+@@ -1198,18 +1198,28 @@ static void handle_vertex_buffers2(struct vk_cmd_queue_entry *cmd,
+ {
+    struct vk_cmd_bind_vertex_buffers2 *vcb = &cmd->u.bind_vertex_buffers2;
+ 
++   printf( "%s %d", __FILE__, __LINE__ );
+    int i;
+    for (i = 0; i < vcb->binding_count; i++) {
++      printf( "%s %d", __FILE__, __LINE__ );
+       int idx = i + vcb->first_binding;
+ 
+       state->vb[idx].buffer_offset = vcb->offsets[i];
+-      if (state->vb_sizes[idx] != UINT32_MAX)
++      printf( "%s %d", __FILE__, __LINE__ );
++      if (state->vb_sizes[idx] != UINT32_MAX) {
++         printf( "%s %d", __FILE__, __LINE__ );
+          pipe_resource_reference(&state->vb[idx].buffer.resource, NULL);
++      }
++      printf( "%s %d", __FILE__, __LINE__ );
+       state->vb[idx].buffer.resource = vcb->buffers[i] && (!vcb->sizes || vcb->sizes[i]) ? lvp_buffer_from_handle(vcb->buffers[i])->bo : NULL;
++      printf( "%s %d", __FILE__, __LINE__ );
+       if (state->vb[idx].buffer.resource && vcb->sizes) {
++         printf( "%s %d", __FILE__, __LINE__ );
+          if (vcb->sizes[i] == VK_WHOLE_SIZE || vcb->offsets[i] + vcb->sizes[i] >= state->vb[idx].buffer.resource->width0) {
++           printf( "%s %d", __FILE__, __LINE__ );
+             state->vb_sizes[idx] = UINT32_MAX;
+          } else {
++           printf( "%s %d", __FILE__, __LINE__ );
+             struct pipe_transfer *xfer;
+             uint8_t *mem = pipe_buffer_map(state->pctx, state->vb[idx].buffer.resource, 0, &xfer);
+             state->pctx->buffer_unmap(state->pctx, xfer);
+@@ -1217,19 +1227,31 @@ static void handle_vertex_buffers2(struct vk_cmd_queue_entry *cmd,
+             state->vb[idx].buffer.resource->width0 = MIN2(vcb->offsets[i] + vcb->sizes[i], state->vb[idx].buffer.resource->width0);
+             state->vb_sizes[idx] = vcb->sizes[i];
+          }
++         printf( "%s %d", __FILE__, __LINE__ );
+       } else {
++         printf( "%s %d", __FILE__, __LINE__ );
+          state->vb_sizes[idx] = UINT32_MAX;
+       }
+ 
++      printf( "%s %d", __FILE__, __LINE__ );
+       if (vcb->strides) {
++        printf( "%s %d", __FILE__, __LINE__ );
+          state->vb_strides[idx] = vcb->strides[i];
+          state->vb_strides_dirty = true;
+       }
++      printf( "%s %d", __FILE__, __LINE__ );
+    }
+-   if (vcb->first_binding < state->start_vb)
++   printf( "%s %d", __FILE__, __LINE__ );
++   if (vcb->first_binding < state->start_vb) {
++     printf( "%s %d", __FILE__, __LINE__ );
+       state->start_vb = vcb->first_binding;
+-   if (vcb->first_binding + vcb->binding_count >= state->num_vb)
++   }
++   printf( "%s %d", __FILE__, __LINE__ );
++   if (vcb->first_binding + vcb->binding_count >= state->num_vb) {
++     printf( "%s %d", __FILE__, __LINE__ );
+       state->num_vb = vcb->first_binding + vcb->binding_count;
++   }
++   printf( "%s %d", __FILE__, __LINE__ );
+    state->vb_dirty = true;
+ }
+ 

@@ -1,0 +1,16 @@
+app-arch/cpio
+app-editors/vim
+app-portage/gentoolkit
+dev-debug/gdb
+dev-embedded/u-boot-tools
+dev-libs/boost
+dev-libs/libusb
+dev-util/vulkan-headers
+dev-util/vulkan-tools
+media-libs/glm
+media-libs/libsdl3
+media-libs/mesa
+media-libs/shaderc
+media-libs/vulkan-layers
+media-libs/vulkan-loader
+net-misc/curl

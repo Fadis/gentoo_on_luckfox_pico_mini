@@ -1,0 +1,1 @@
+sys-apps/systemd -elfutils xkb -kernel-install dns-over-tls -iptables -curl -xkb -dns-over-tls -openssl -zstd

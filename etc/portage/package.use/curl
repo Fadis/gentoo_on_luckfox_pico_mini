@@ -1,0 +1,1 @@
+>=net-misc/curl-7.86.0-r3 -adns -alt-svc -ftp -hsts -http2 -http3 -httpsrr -imap -pop3 -psl -quic -smtp -ssh -tftp -websocket -zstd

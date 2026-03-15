@@ -1,0 +1,2 @@
+>=media-libs/vulkan-layers-1.4.328.0 -wayland
+>=media-libs/vulkan-loader-1.3.231 layers -wayland

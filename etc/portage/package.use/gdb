@@ -1,0 +1,2 @@
+# move sys-devel/gdb dev-debug/gdb
+dev-debug/gdb multitarget

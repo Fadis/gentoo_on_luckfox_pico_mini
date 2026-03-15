@@ -1,0 +1,1 @@
+>=dev-libs/elfutils-0.189-r1 -bzip2 -static-libs utils -zstd -lzma
